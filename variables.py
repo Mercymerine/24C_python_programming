@@ -14,7 +14,7 @@ print(age)
 height = 1.65 #floating
 print(height)
 
-isold = True # boolean
+isold = True 
 
 isyoung = True # boolean
 
