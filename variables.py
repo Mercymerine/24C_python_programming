@@ -9,8 +9,10 @@ print('John')
 car = 'mazda' # string
  
 age = 40 #integer
+print(age)
 
 height = 1.65 #floating
+print(height)
 
 isold = True # boolean
 
