@@ -1,4 +1,4 @@
-# mathematical operations in python
+# Using mathematical operations in python
 num1 = int(input('Enter the first number: '))
 
 num2 = int(input('Enter the second number: '))
