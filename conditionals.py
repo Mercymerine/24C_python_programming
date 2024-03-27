@@ -44,7 +44,7 @@ else:
     print('We will fund you but you will need to look for other sources to also support you')
 
 mark=int(input('Enter yor mark '))
-if(mark<40):
+if(mark<40 and mark > 0):
     print('FAIL')
 elif(mark>=40 and mark<49):
     print('D')
@@ -52,5 +52,21 @@ elif(mark>=50 and mark<59):
     print('C')
 elif(mark>=60 and mark<69):
     print('B')
-else:
+elif (mark <= 100):
     print('A')
+else:
+    print('Invalid mark')
+
+mark=int(input('Enter yor mark '))
+if(mark<40 and mark > 0):
+    print('FAIL')
+elif(mark<49):
+    print('D')
+elif(mark<59):
+    print('C')
+elif(mark<69):
+    print('B')
+elif (mark <= 100):
+    print('A')
+else:
+    print('Invalid mark')
