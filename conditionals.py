@@ -5,6 +5,7 @@ print(20<=10)
 print(20>=10)
 print(20==10)
 '''
+'''
 # if statement
 if (5>4) :
     print('Hi, five')
@@ -56,7 +57,7 @@ elif (mark <= 100):
     print('A')
 else:
     print('Invalid mark')
-
+'''
 mark=int(input('Enter yor mark '))
 if(mark<40 and mark > 0):
     print('FAIL')
