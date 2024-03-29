@@ -56,6 +56,7 @@ students = [
     }
 ]
 '''
+#ASSIGNMENT 1
 #Finding the average for each student
 
 student_grades = {
@@ -67,7 +68,7 @@ student_grades = {
 }
 student_average = {}
 for key, values in student_grades.items():
-    student_average[key] = sum(values) / len(values)
+    student_average[key] = sum(values) / len(values) #
 print(student_average)
 
 #Student with the highest average grade
@@ -82,4 +83,4 @@ pass_mark = 50
 for k, v in student_average.items():
     if v > pass_mark:
         print(f'{k}: {v}')
-   
+
