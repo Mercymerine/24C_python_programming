@@ -20,5 +20,5 @@ for heading in headings:
 paragraphs = soup.find_all('p')
 #print(headings)
 
-for paragraph in paragraphs:
-    print(paragraph.text)
+#for paragraph in paragraphs:
+    #print(paragraph.text)

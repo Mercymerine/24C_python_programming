@@ -10,7 +10,7 @@ def get_url():
     soup = BeautifulSoup(response.content, 'html.parser')
 
     articles = soup.get_text('article')
-    print (articles)
+    return articles
 
 get_url()
 
