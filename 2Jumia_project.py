@@ -15,28 +15,22 @@ def get_url(url):
         discounts = soup.find_all('div', class_='bdg _dsct _sm')
         def find_discount():
             for discount in discounts:
-                if discount:
-                    print(discount.text)
-                else:
-                    print('Not found')
+                print(discount.text)
+
             
                 #Finding prices
         prices = soup.find_all('div', class_ = 'prc')
         def find_price():
             for price in prices:
-                if price:
-                    return(price.text)
-                else:
-                    return('Not found')
+                return(price.text)
+              
 
                 #Finding product name
         products = soup.find_all('div', class_ = 'name')
         def find_product_name():
             for product in products:
-                if product:
-                    return(product.text)
-                else:
-                    return('Not found')
+                return(product.text)
+                
 
                 #Finding ratings
         review_divs = soup.find_all('div', class_='rev' )
@@ -48,20 +42,16 @@ def get_url(url):
                 rating_div =review_div.find('div', class_='stars _s')
                     #print(rating_div)
                 for ratings in rating_div:
-                    if ratings:
-                        return(ratings.text)
-                    else:
-                         return('Rating not found')
+                    return(ratings.text)
+                   
                 
         # Finding reviews
         reviews = soup.find_all('div', class_ ='rev')
         def find_reviews():
             #Extracting reviews
             for review in reviews:
-                if review:
-                    return(review.text)
-                else:
-                    return('Review not found')
+                return(review.text)
+               
 
                 '''
                 #Finding the brand name
@@ -82,7 +72,13 @@ def get_url(url):
                 
         writer = csv.writer(csvfile)
         writer.writerow(['Price', 'Discount', 'Product_name', 'Ratings', 'Reviews'])
-        for price, discount, product_name, rating, review in zip(find_price(), find_discount(), find_product_name(), find_ratings(), find_reviews()):
+        prices = find_price()
+        discounts = find_discount()
+        product_name = find_product_name()
+        ratings = find_ratings()
+        reviews = find_reviews()
+
+        for price, discount, product_name, rating, review in (prices, discounts, product_name, ratings, reviews):
             writer.writerow ([price, discount, product_name, rating, review])
         '''
         with open('data.csv', 'w', newline='') as csvfile:
