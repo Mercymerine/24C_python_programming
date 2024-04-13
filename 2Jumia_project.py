@@ -3,14 +3,66 @@ from bs4 import BeautifulSoup
 import re
 import csv
 
+
+
 def get_url(url):
-    response = requests.get(url)
-    #print(response.content)
+
+    
+    response = requests.get('https://www.jumia.co.ke/hair-care-d/')
+        #print(response.content)
 
     soup = BeautifulSoup(response.content, 'html.parser')
-    #print(soup)
+        #print(soup)
+
+    divs = soup.find_all('div', class_ = 'itm col')
+    #print(divs)
 
     with open('data.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile) 
+        writer.writerow(['Product_name', 'Prices', 'Discounts', 'Reviews and Rates'])
+       
+
+        for div in divs:
+            #Finding product name
+            product_name = div.find_all('div', class_='name')
+            for name in product_name:
+                product_name = name.text.strip()
+            
+            
+            #Finding prices
+            prices = div.find_all('div', class_ ='prc')
+            for price in prices:
+                prices = price.text.strip()
+
+            #Finding discounts
+            discounts = soup.find_all('div', class_='bdg _dsct _sm')
+            for discount in discounts:
+                discounts = discount.text.strip()
+
+            #Finding reviews and rates
+            reviews = soup.find_all('div', class_ ='rev')
+            for review in reviews:
+                reviews =review.text.strip()
+            
+            
+
+            writer.writerow([product_name, prices, discounts, reviews])
+            
+            
+
+get_url('https://www.jumia.co.ke/hair-care-d/')
+
+'''
+    with open('data.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(['Price', 'Discount', 'Product_name', 'Ratings', 'Reviews'])
+       
+    '''  
+       
+           
+            
+''' 
+            
             #Finding budget discount
         discounts = soup.find_all('div', class_='bdg _dsct _sm')
         def find_discount():
@@ -53,7 +105,7 @@ def get_url(url):
                 return(review.text)
                
 
-                '''
+                
                 #Finding the brand name
                 a_tag = soup.find_all('a', class_='_more')
                 #print(a_tag)
@@ -67,28 +119,23 @@ def get_url(url):
                 else:
                     print("Brand not found.")
 
-                '''
+                
 
                 
-        writer = csv.writer(csvfile)
-        writer.writerow(['Price', 'Discount', 'Product_name', 'Ratings', 'Reviews'])
-        prices = find_price()
-        discounts = find_discount()
-        product_name = find_product_name()
-        ratings = find_ratings()
-        reviews = find_reviews()
+      
 
         for price, discount, product_name, rating, review in (prices, discounts, product_name, ratings, reviews):
             writer.writerow ([price, discount, product_name, rating, review])
-        '''
+        
         with open('data.csv', 'w', newline='') as csvfile:
                 writer = csv.writer(csvfile)
                 writer.writerow(['price'])
                 for price in prices:
                     writer.writerow([price.text])
         
-    '''
+    
 
 get_url('https://www.jumia.co.ke/hair-care-d/')
 
 
+'''
